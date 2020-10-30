@@ -62,7 +62,7 @@ public class Game {
 	     // if playerMove is SCISSORS  
 	      else
 	        System.out.println(computerPlayer.equals("Rock") ? "Computer Wins": "Player wins"); 
-		
+		this.setWinner(computer);
 		}
 			    
 	private void setComputerPlayer() {
