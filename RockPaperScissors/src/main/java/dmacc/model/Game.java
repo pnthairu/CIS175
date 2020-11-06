@@ -46,6 +46,12 @@ public class Game {
 	    	  System.out.println(computerPlayer.equals("Paper") ? "Computer Wins": "Player wins"); 
 		        this.setWinner(computer);
 	      }
+		
+		// if playerMove is Paper       
+	      else if (player1.equals("Paper")) {
+	    	  System.out.println(computerPlayer.equals("Rock") ? "Computer Wins": "Player wins"); 
+		        this.setWinner(winner);
+	      }
 	        
 	      // if playerMove is PAPER
 	      else if (player1.equals("Paper")) {
@@ -56,6 +62,7 @@ public class Game {
 	     // if playerMove is SCISSORS  
 	      else
 	        System.out.println(computerPlayer.equals("Rock") ? "Computer Wins": "Player wins"); 
+		this.setWinner(computer);
 		}
 			    
 	private void setComputerPlayer() {
