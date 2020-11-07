@@ -7,6 +7,9 @@ import javax.persistence.Id;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import lombok.Data;
+
+@Data
 @Entity
 public class Contact {
 	
@@ -25,7 +28,6 @@ public class Contact {
 
 	}
 	
-
 	public Contact(String name, String phone, String relationship) {
 		super();
 		this.name = name;
@@ -39,64 +41,5 @@ public class Contact {
 		this.name = name;
 		this.phone = phone;
 		this.relationship = relationship;
-	}
-
-
-	public long getId() {
-		return id;
-	}
-
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-
-	public String getName() {
-		return name;
-	}
-
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	
-	public String getPhone() {
-		return phone;
-	}
-
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
-
-	public String getRelationship() {
-		return relationship;
-	}
-
-	
-	public Address getAddress() {
-		return address;
-	}
-
-
-	public void setAddress(Address address) {
-		this.address = address;
-	}
-
-
-	public void setRelationship(String relationship) {
-		this.relationship = relationship;
-	}
-
-
-	@Override
-	public String toString() {
-		return "Contact [id=" + id + ", name=" + name + ", phone=" + phone + ", relationship=" + relationship
-				+ ", address=" + address + "]";
-	}
-
-	
+	}	
 }
