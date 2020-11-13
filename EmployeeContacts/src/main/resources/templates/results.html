@@ -2,25 +2,46 @@
 <head>
 <meta charset="UTF-8">
 <title>View All Contacts</title>
+<style>
+
+div#container	{
+	width:850px;
+	height: 590px;
+	margin:auto;
+	padding:10px;
+	background-color:#C99;	
+	border:thin solid black;
+	font-color: blue;
+	}	
+	
+	h4 {text-align: center;}
+	
+	h3 {text-align: center;
+		color: brown;
+		font-weight: bold;
+		font-size: 30px;}
+
+</style>
 </head>
 <body>
+<div id = "container">
 <form>
 <table>
+<h3> EMPLOYEE DETAILS FORM</h3>
 <tr th:each="currentContact : ${contacts}" >
 <td th:text="${currentContact.id}" />
  <td th:text="${currentContact.name}" />
  <td th:text="${currentContact.phone}" />
  <td th:text="${currentContact.relationship}" />
  <td th:text="${currentContact.address.street}" />
- <td th:text="${currentContact.address.city}" />
+ <td th:text="${currentContact.address.city}" />  
  <td th:text="${currentContact.address.state}" />
- 
- <td th:text="${currentContact.address.state}" />
- <td><a th:href="@{/edit/{id}(id=${currentContact.id})}">Edit</a></td>
+ <td><a th:href="@{/edit/{id}(id=${currentContact.id})}"> Edit </a></td>
+ <td><a th:href="@{/delete/{id}(id=${currentContact.id})}"> Delete </a></td>
 </tr>
-
 </table>
 </form>
 <a href="../inputContact">Add a new contact</a>
+</div>
 </body>
 </html>

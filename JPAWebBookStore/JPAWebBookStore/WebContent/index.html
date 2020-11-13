@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Paul Thairu Online Book Store</title>
+<style>
+	div#container	{
+	width:850px;
+	height: 390px;
+	margin:auto;
+	padding:10px;
+	background-color:powderblue;	
+	border:thin solid black;
+	font-color: blue;
+	}	
+	h4 {text-align: center;}
+</style>
+</head>
+<body>
+<p></p>
+<div id = "container">
+<p style="background-color:tomato" align="center"> Online Book Library home page </p>
+<form action ="addBookServlet" method="post">	
+<p> Click below link to display all books in the library</p>
+	<a href = "viewAllBooksServlet"> View all the books in the library</a>	
+<p style="background-color:tomato" align="center"> Welcome to Paul Thairu Online book Library add new book Form </p>
+	ISBN: <input type = "text" name = "ISBN">
+	Author: <input type = "text" name = "bookAuthor">
+	Title: <input type = "text" name = "bookTitle">
+	Price: <input type = "text" name = "price">	
+<p> Click add book button to add the book </p>
+	<input type = "submit"  value = "Add Book">		
+<p></p>
+<p style="background-color:tomato" align="center"> Below are links to ADD/VIEW CUSTOMER LIST OF BOOK(S)</p>
+<p><h4><a href= "addBooksForListServlet"><strong><b>ADD NEW LIST</b></strong></a></h4>
+</p>
+<p><p><h4><a href="viewAllListsServlet"><strong><b>VIEW LIST OF CUSTOMER OF BOOKS </b></strong></a></h4>
+</p>
+</form><br />
+
+</div>
+</body>
+</html>

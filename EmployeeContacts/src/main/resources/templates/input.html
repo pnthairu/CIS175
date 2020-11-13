@@ -4,19 +4,159 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert New or Edit Contact</title>
+<style>	
+	
+	div#container	{
+	width:850px;
+	height: 590px;
+	margin:auto;
+	padding:10px;
+	background-color:#C99;	
+	border:thin solid black;
+	font-color: blue;
+	}	
+	h4 {text-align: center;}
+	
+	h3 {text-align: center;
+		color: brown;
+		font-weight: bold;
+		font-size: 30px;}
+	
+	label {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  text-align: right;
+  width: 400px;
+  line-height: 26px;
+  margin-bottom: 10px;
+}
+
+input {
+  height: 20px;
+  flex: 0 0 200px;
+  margin-left: 10px;
+}
+</style>	
+
+<script>
+
+	function validName(){
+		
+		var staffName = document.getElementById("name").value;
+		
+		if (staffName == "")
+		{			
+			document.getElementById("namesMatch").innerHTML = "Employee Name can not be Empty";				
+		}
+		else														
+		{								
+			document.getElementById("namesMatch").innerHTML = "Employe name/phone VALID.. you can now submit the form";			
+		}		
+	}
+	
+	function isNumberKey(evt) {	
+	   
+       var charCode = (evt.which) ? evt.which : event.keyCode;
+    		   
+       if (charCode > 31 && (charCode < 48 || charCode > 57) || charCode==""){
+    	   
+    	   document.getElementById("namesMatch").innerHTML = "Numbers only between 0-9";	
+    	   return false;
+       }
+    	
+       else{
+    	   
+    	   document.getElementById("namesMatch").innerHTML = "Numbers valid!!!";
+    	   return true;
+       }    
+       
+    }
+	
+	function validAddress(){
+		
+		var empStreet = document.getElementById("street").value;
+		var empCity = document.getElementById("city").value;
+		var empState = document.getElementById("state").value;
+		
+		if (empStreet == "" || empCity == "" || empState == "")
+		{			
+			document.getElementById("namesAddress").innerHTML = "Street, City or State cannot be empy";				
+		}
+		else														
+		{								
+			document.getElementById("namesAddress").innerHTML = "Address valid!!! you can now submit the form";			
+		}		
+	}	
+
+</script>
+
 </head>
 <body>
-<form th:object="${newContact}" th:action="@{/update/{id}(id=${newContact.id})}" method=POST>
-Name: <input name="name" size="20" th:field="*{name}"><br />
-Relationship: <input name="relationship" size="20" th:field="*{relationship}"><br />
-Phone Number: <input name="phone" size="20" th:field="*{phone}"><br />
-Street: <input name="address.street" size="20" th:field="*{address.street}"><br />
-City: <input name="address.city" size="20" th:field="*{address.city}"><br />
-State: <input name="address.state" size="20" th:field="*{address.state}"><br />
+<div id = "container">
 
-<input name="Submit" type="submit" value="submit" />
+<form id = "form1" name="form1" th:object="${newContact}" th:action="@{/update/{id}(id=${newContact.id})}" method=POST>
+<h3> EMPLOYEE FORM</h3>
+
+  <p>
+	<label for="name">Name: 
+		<input type="text" name = "name" id = "name" size ="20" th:field="*{name}"/>
+	</label>
+  </p>
+  
+  <p>
+	<label for="relationship">Relationship: 
+		<input type="text" name = "relationship" id = "relationship" size ="20" th:field="*{relationship}"/>
+	</label>
+  </p>
+  
+  <p>
+	<label for="phone">Phone Number:
+		<input type="text" onkeypress="return isNumberKey(event)" name = "phone" id = "phone" size ="20" th:field="*{phone}"/>
+	</label>
+  </p>
+  
+  <p>
+	<label for="street">Street: 
+		<input type="text" name = "address.street" id = "street" size ="20" th:field="*{address.street}"/>
+	</label>
+  </p>
+  
+  <p>
+	<label for="city">City:
+		<input type="text" name = "address.city" id = "city" size ="20" th:field="*{address.city}"/>
+	</label>
+  </p>
+  
+  <p>
+	<label for="state">State:
+		<input type="text" name = "address.state" id = "state" size ="20" th:field="*{address.state}"/>
+	</label>
+  </p>  
+
+<p>
+	<input type="button" name="button" id="button" value=" Click Validate Name/Phone" onClick="validName()" />   
+</p>
+    
+<p style="color:purple" >Name/Phone validation results: 
+	<span id="namesMatch"></span>
+ </p>
+ 
+ <p>
+	<input type="button" name="button" id="button" value=" Click Valid Address" onClick="validAddress()" />   
+</p>
+
+ <p style="color:purple" >Address validation results: 
+	<span id="namesAddress"></span>
+ </p>
+  
+<p>
+	<input name="Submit" type="submit" value="submit" style="font-size:18px;"/>
+</p>
 </form>
+<p>
 <a href="../viewAll">View All Contacts</a>
-
+</p>
+</div>
 </body>
 </html>
